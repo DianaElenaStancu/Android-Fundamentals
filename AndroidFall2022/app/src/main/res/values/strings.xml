@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AndroidFall2022</string>
+    <string name="hint_email">Please add your email address</string>
+    <string name="hint_password">Please add your password</string>
+    <string name="login">Login</string>
+    <string name="email_and_password">Email and Password</string>
+    <string name="textview2">TextView2</string>
+    <string name="textview3">TextView3</string>
+</resources>
