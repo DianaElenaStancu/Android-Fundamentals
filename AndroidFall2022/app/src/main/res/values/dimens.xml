@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="small_space">8dp</dimen>
+    <dimen name="big_space">64dp</dimen>
+    <dimen name="very_big_space">180dp</dimen>
+</resources>
