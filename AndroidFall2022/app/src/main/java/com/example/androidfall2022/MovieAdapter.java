@@ -1,5 +1,7 @@
 package com.example.androidfall2022;
 
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -14,15 +16,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         this.movieList = movieList;
     }
 
+    //create the items and add them to the parent (RecyclerView)
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_item, parent, false);//adauga content la view-ul nostru
+        return new MovieViewHolder(itemView);
     }
 
+    //populate the item view
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
-
+        Movie currentMovie = movieList.get(position);
+        holder.getTextViewTitle().setText(currentMovie.getTitle());
+        holder.getTextViewCategory().setText(currentMovie.getCategory());
     }
 
     @Override

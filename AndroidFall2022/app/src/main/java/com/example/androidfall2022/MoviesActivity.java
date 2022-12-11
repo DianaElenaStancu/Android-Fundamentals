@@ -1,6 +1,8 @@
 package com.example.androidfall2022;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -11,10 +13,15 @@ public class MoviesActivity extends AppCompatActivity {
 
     private List<Movie> movieList;
 
+    private RecyclerView moviesRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
+
+        moviesRecyclerView = findViewById(R.id.recyclerViewMovies);
+        setupRecyclerView();
     }
 
     // 0. add RecyclerView in the xml file & define the item template (matrita) - DONE
@@ -39,12 +46,27 @@ public class MoviesActivity extends AppCompatActivity {
 
 
     // 2. get the custom adapter
-    // 2.1. define the ViewHolder
-    // 2.2. define the Adapter
+    // 2.1. define the ViewHolder -DONE
+    // 2.2. define the Adapter - DONE
+    //setAdapter()...movieList
 
 
 
-    // 3. setup adapter for the RecyclerView
-    // 3.1. setup LayoutManager
-    // 3.2. set the adapter
+    // 3. setup adapter for the RecyclerView ---
+    // 3.1. setup LayoutManager - DONE
+    // 3.2. set the adapter - DONE
+    private void setMovieLayoutManager() {
+        moviesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void setMoviesAdapater() {
+        moviesRecyclerView.setAdapter(new MovieAdapter(movieList));
+    }
+
+    private void setupRecyclerView() {
+        setMovieList();
+        setMovieLayoutManager();
+        setMoviesAdapater();
+    }
+
 }

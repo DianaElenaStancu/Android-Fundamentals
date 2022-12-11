@@ -12,12 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidfall2022.activities.FirstActivity;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private EditText editTextEmail, editTextPassword;
     private TextView textViewDisplayAccount;
     private Button buttonDisplayAboutAndroid;
+    private Button buttonOpenActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.login);
         setupViews();
         displayAboutAndroidOnClick();
+        openActivityOnClick();
     }
 
     private void setupViews() {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         textViewDisplayAccount = findViewById(R.id.textViewDisplayAccount);
         buttonDisplayAboutAndroid = findViewById(R.id.buttonAboutAndroid);
+        buttonOpenActivity = findViewById(R.id.buttonOpenActivity);
     }
 
     private void displayAboutAndroidOnClick() {
@@ -41,23 +46,44 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void openActivityOnClick() {
+        buttonOpenActivity.setOnClickListener(view -> {
+            Intent openNewActivity = new Intent(MainActivity.this, FirstActivity.class);
+            startActivity(openNewActivity);
+        });
+    }
+
     public void loginOnClick(View view) {
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
 
         if (isValidForm(email, password)) {
             if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                textViewDisplayAccount.setText(new StringBuilder().append(email).append(", ").append(password).toString());
+                moveToMoviesActivity(email, password);
             } else {
-                editTextEmail.setError(getString(R.string.add_email));
-                Toast.makeText(MainActivity.this, getString(R.string.email_not_valid), Toast.LENGTH_LONG).show();
+                invalidEmail();
             }
         } else {
-            //TODO add validation per field
-            editTextEmail.setError(getString(R.string.add_email));
-            editTextPassword.setError(getString(R.string.add_password));
-            Log.e(TAG, "email and password empty");
+            invalidForm();
         }
+    }
+
+    private void moveToMoviesActivity(String email, String password) {
+        textViewDisplayAccount.setText(new StringBuilder().append(email).append(", ").append(password).toString());
+        Intent displayMoviesActivity = new Intent(MainActivity.this, MoviesActivity.class);
+        startActivity(displayMoviesActivity);
+    }
+
+    private void invalidEmail() {
+        editTextEmail.setError(getString(R.string.add_email));
+        Toast.makeText(MainActivity.this, getString(R.string.email_not_valid), Toast.LENGTH_LONG).show();
+    }
+
+    private void invalidForm() {
+        //TODO add validation per field
+        editTextEmail.setError(getString(R.string.add_email));
+        editTextPassword.setError(getString(R.string.add_password));
+        Log.e(TAG, "email and password empty");
     }
 
     private boolean isValidForm(String email, String password) {
