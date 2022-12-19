@@ -23,8 +23,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:onClick="loginOnClick"/>
+        android:onClick="loginOnClick"
+        android:text="@string/login" />
 
     <TextView
         android:id="@+id/textViewDisplayAccount"
@@ -56,8 +56,14 @@
         android:text="@string/about_android_views" />
 
     <Button
+        android:id="@+id/buttonOpenActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/open_activity"
-        android:id="@+id/buttonOpenActivity"/>
+        android:text="@string/open_activity" />
+
+    <Button
+        android:id="@+id/buttonOpenNavigationActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Navigation Activity" />
 </LinearLayout>

@@ -6,6 +6,7 @@ import static com.example.androidfall2022.activities.FirstActivity.STATUS;
 import static com.example.androidfall2022.activities.FirstActivity.MESSAGE;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,15 @@ public class SecondActivity extends AppCompatActivity {
 
         textViewReceivedMessage = findViewById(R.id.textViewReceivedMessage);
         receiveMessage();
+
+        insertBlankFragment();
+    }
+
+    // add a fragment in tge activity in a dynamic way
+    private void insertBlankFragment() {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayoutPlaceholder, new BlankFragment());
+        fragmentTransaction.commit();
     }
 
     private void receiveMessage() {

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
@@ -30,6 +32,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         Movie currentMovie = movieList.get(position);
         holder.getTextViewTitle().setText(currentMovie.getTitle());
         holder.getTextViewCategory().setText(currentMovie.getCategory());
+        if (currentMovie.getImageUrl().length() > 0)
+            Picasso.get().load(currentMovie.getImageUrl())
+                    .placeholder(R.drawable.movie_icon)
+                    .error(R.drawable.error)
+                    .into(holder.getImageViewPoster());
     }
 
     @Override

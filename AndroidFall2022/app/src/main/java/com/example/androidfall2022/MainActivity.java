@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.androidfall2022.activities.FirstActivity;
+import com.example.androidfall2022.navigation.NavigationActivity;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewDisplayAccount;
     private Button buttonDisplayAboutAndroid;
     private Button buttonOpenActivity;
+    private Button buttonOpenNavigationActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setupViews();
         displayAboutAndroidOnClick();
         openActivityOnClick();
+        openNavigationActivityOnClick();
     }
 
     private void setupViews() {
@@ -37,7 +40,16 @@ public class MainActivity extends AppCompatActivity {
         textViewDisplayAccount = findViewById(R.id.textViewDisplayAccount);
         buttonDisplayAboutAndroid = findViewById(R.id.buttonAboutAndroid);
         buttonOpenActivity = findViewById(R.id.buttonOpenActivity);
+        buttonOpenNavigationActivity = findViewById(R.id.buttonOpenNavigationActivity);
     }
+
+    private void openNavigationActivityOnClick() {
+        buttonOpenNavigationActivity.setOnClickListener(view -> {
+            Intent navigationActivity = new Intent(MainActivity.this, NavigationActivity.class);
+            startActivity(navigationActivity);
+        });
+    }
+
 
     private void displayAboutAndroidOnClick() {
         buttonDisplayAboutAndroid.setOnClickListener(view -> {

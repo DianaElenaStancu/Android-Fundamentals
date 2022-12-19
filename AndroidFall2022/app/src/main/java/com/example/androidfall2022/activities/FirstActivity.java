@@ -125,4 +125,10 @@ public class FirstActivity extends AppCompatActivity {
         super.onDestroy();
         Log.e(TAG, "onDestroy");
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.e("FirstActivity", "on back pressed");
+    }
 }
