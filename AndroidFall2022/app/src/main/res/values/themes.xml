@@ -22,4 +22,14 @@
     <style name="Theme.AndroidFall2022.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AndroidFall2022.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LargeBlueText">
+        <item name="android:textColor">@color/teal_200</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LargeBlueItalicText" parent ="LargeBlueText">
+        <item name="android:textStyle">italic</item>
+    </style>
 </resources>

@@ -66,4 +66,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open Navigation Activity" />
+
+
+    <Button
+        android:id="@+id/buttonOpenStorageActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/storage" />
 </LinearLayout>
